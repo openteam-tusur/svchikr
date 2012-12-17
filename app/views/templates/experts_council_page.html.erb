@@ -1,0 +1,28 @@
+<% content_for :extend_javascripts do %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="blue_pages">
+
+    <% if @links %>
+      <div class="links">
+        <h3>Ссылки</h3>
+        <%= raw @links.content.body.html_safe %>
+        <div class="right_side_bottom"></div>
+      </div>
+    <% end %>
+
+    <%= render :partial => 'commons/experts_council_employees', :locals => { :object => @content_first.content } if @content_first.content.items %>
+    <% if @content_first.content.subdivisions %>
+      <h2>Подразделения</h2>
+      <%= render :partial => 'commons/subdivisions', :locals => { :object => @content_first.content } %>
+    <% end %>
+    <%= render :partial => 'regions/reports_part', :locals => { :reports => @reports } if @reports %>
+    <%= render :partial => 'regions/dependent_subdivisions', :locals => { :object => @dependent_subdivisions } if @dependent_subdivisions %>
+
+    <%= render 'commons/social_links' %>
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
+

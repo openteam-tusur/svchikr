@@ -1,0 +1,17 @@
+<% content_for :extend_javascripts do %>
+<% end %>
+
+<%= content_for :actual_and_calendar do %>
+  <%= render :partial => 'regions/actual_and_calendar' if @actual || @calendar %>
+<% end %>
+
+<% content_for :content do %>
+  <%= render :partial => 'regions/governor_comments' if @governor_comments %>
+  <%= render_partial_for_region(@news) if @news %>
+<% end %>
+
+<% content_for :map_region do %>
+  <%= raw @map_region.content.body if @map_region %>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

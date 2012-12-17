@@ -1,0 +1,22 @@
+<div class="bottom_navigation">
+  <div class="inner">
+
+    <% object.values.first['children'].each_with_index do |hash, index| %>
+      <div <%= 'class=last' if index == 4 %>>
+
+        <h3>
+          <%= link_to hash.last['title'], hash.last['path'] %>
+        </h3>
+
+        <ul>
+          <% hash.last['children'].each do |name, item| %>
+            <li>
+              <%= link_to item['title'], item['path'] %>
+            </li>
+          <% end if hash.last['children'] %>
+        </ul>
+
+      </div>
+    <% end %>
+  </div>
+</div>

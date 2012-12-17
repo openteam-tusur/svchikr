@@ -1,0 +1,17 @@
+<% content_for :extend_javascripts do %>
+<% end %>
+
+<% content_for :content do %>
+
+  <%= content_tag :div, render(:partial => 'regions/right_side'), :class => 'right_side' if @right_side_navigation || @right_side_links || @right_side_charts || @right_side_facts %>
+
+  <div class="article">
+    <%= render_partial_for_region(@content_first)  if @content_first %>
+    <%= render_partial_for_region(@content_second) if @content_second %>
+    <%= render_partial_for_region(@content_third)  if @content_third %>
+    <%= render :partial => 'regions/reports_part', :locals => { :reports => @reports } if @reports %>
+    <%= yield :social_links %>
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

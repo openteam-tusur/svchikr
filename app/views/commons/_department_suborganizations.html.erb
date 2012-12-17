@@ -1,0 +1,4 @@
+<% object.categories.each do |category| %>
+  <h2><%= category.title %></h2>
+  <%= render :partial => 'commons/subdivisions', :locals => { :object => category } %>
+<% end %>

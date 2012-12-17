@@ -1,0 +1,10 @@
+<div class="reports">
+  <h2><%= reports.content.title %></h2>
+  <ul>
+    <% reports.content.gallery_pictures.each do |item| %>
+      <li>
+        <%= link_to content_tag(:span, '&nbsp;'.html_safe, :class => 'icon') + item.description, item.picture_url, :class => extension(item.picture_url) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

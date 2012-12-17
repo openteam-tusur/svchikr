@@ -1,0 +1,18 @@
+<%= link_to paper.link ? paper.link : paper.file_url, :class => extension(paper.file_url) do %>
+  <%= content_tag(:span, '&nbsp;'.html_safe, :class => 'icon') %>
+  <%= paper.title %>
+<% end %>
+
+<p class="title">
+  <%= paper.authority %>,
+
+  <% if paper.approved_on %>
+    <span class="kind"><%= paper.kind %></span>
+    <%= "#{t('paper_of')} #{l(paper.approved_on.to_date)}" %>
+    <%= "№ #{paper.number}" if paper.number %>
+  <% else %>
+    <span class="kind"><%= paper.kind %></span>,
+    <%= "#{t('published_on')} #{l(paper.published_on.to_date)}" %>
+  <% end %>
+</p>
+

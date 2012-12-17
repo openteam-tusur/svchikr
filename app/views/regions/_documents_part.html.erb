@@ -1,0 +1,23 @@
+<%= link_to 'RSS', object.rss_link, :class => 'rss', :title => t('rss_documents') %>
+
+<div>
+  <%= form_tag object.action, :method => :get do %>
+    <%= text_field_tag 'parts_params[documents][keywords]', object.keywords, :class => 'documents_query' %>
+    <%= submit_tag t('find') %>
+  <% end %>
+</div>
+
+<ul class="documents">
+  <% object.papers.each do |paper| %>
+    <li>
+      <%= render :partial => 'regions/paper', :object => paper %>
+    </li>
+  <% end %>
+</ul>
+
+<% if object.pagination %>
+  <% @array = object.papers %>
+  <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
+
+  <%= paginate @array, :outer_window => 3 %>
+<% end %>

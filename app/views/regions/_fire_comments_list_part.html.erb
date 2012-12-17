@@ -1,0 +1,40 @@
+<div class="fire_comments_list">
+  <% unless object.title.blank? %>
+    <h2>
+      <%= link_to object.title, object.collection_link %>
+      <%= link_to "RSS", object.rss_link, :class => 'rss' %>
+    </h2>
+  <% end %>
+
+  <ul>
+    <% object.items.each_with_index do |item, index| %>
+      <li>
+        <% if item.images.any? && item.images.first  %>
+          <div class="image">
+            <% image = item.images.first.thumbnail ? item.images.first.thumbnail : item.images.first %>
+            <%= image_tag image.url, :title => image.description, :width => image.width, :height => image.height %>
+          </div>
+        <% end %>
+        <div class="description">
+          <span class="date"><%= l Date.parse(item.since), :format => :long %></span>
+          <% unless item.source_link.blank? %>
+            <h5><%= link_to item.title, item.source_link, :rel => "nofollow", :target => "_blank" %></h5>
+          <% else %>
+            <h5><%= link_to item.title, item.link %></h5>
+          <% end %>
+          <% if item.annotation %>
+            <div class="annotation">
+              <p><%= sanitize(item.annotation.html_safe, :tags => []) %></p>
+            </div>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if object.pagination %>
+    <% @array = object.items %>
+    <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
+    <%= paginate @array, :outer_window => 3 %>
+  <% end %>
+</div>

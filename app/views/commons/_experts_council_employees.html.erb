@@ -1,0 +1,15 @@
+<%# object.items.shift %>
+<% if object.items.any? %>
+  <ul class='employees'>
+    <% object.items.each do |item| %>
+      <li>
+        <% if item.link %>
+          <%= link_to item.person, item.link, :class => 'fio' %>
+        <% else %>
+          <span class="fio"><%= item.person %></span>
+        <% end %>
+        <span class='title'><%= item.title %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

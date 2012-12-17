@@ -1,0 +1,26 @@
+<div class="governor_comments">
+  <h2>
+    <%= link_to 'Комментарии Губернатора Томской области', @governor_comments.content.collection_link %>
+    <%= link_to "RSS", @governor_comments.content.rss_link, :class => 'rss' %>
+  </h2>
+
+  <%= render_partial_for_region(@governor_message) if @governor_message %>
+  <%= @governor_comments.content.items[0..5].each_slice(3) do |slice| %>
+    <ul class="<%= cycle("odd", "even") %>">
+      <% slice.each_with_index do |item, index| %>
+        <li <%= 'class=last' if (index+1)%3 == 0 %>>
+          <span class="date"><%= l Date.parse(item.since), :format => :long %></span>
+          <h5><%= link_to item.title.truncate(90, :separator => ' '), item.link, :title => item.title %></h5>
+          <% if item.annotation %>
+            <div class="annotation">
+              <p>
+                <%= sanitize(item.annotation.html_safe, :tags => []).truncate(200, :separator => ' ').html_safe if item.annotation %>
+              </p>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+</div>

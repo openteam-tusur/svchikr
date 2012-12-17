@@ -1,0 +1,9 @@
+<div class="galleria_wrapper">
+  <h3><%= object.title %></h3>
+
+  <div id='galleria'>
+    <% object.gallery_pictures.each do |picture| %>
+      <%= galleria_link(picture) %>
+    <% end  %>
+  </div>
+</div>

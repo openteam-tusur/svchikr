@@ -1,0 +1,11 @@
+<li>
+  <% item.event_entry_properties.each do |event| %>
+    <div class='calendar_item_date'>
+      <%= interval_for(event) %>
+    </div>
+    <div class="calendar_item_placement"><%= event.location.truncate(70, :separator => ' ') %></div>
+  <% end %>
+  <div class="calendar_item_title">
+    <%= link_to item.title.truncate(90, :separator => ' '), item.link, :title => item.title %>
+  </div>
+</li>

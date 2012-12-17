@@ -1,0 +1,29 @@
+<% content_for :custom_page_title do %>
+  <%= content_tag :h1 do %>
+    <%= @page_title %>
+    <%= link_to "RSS", entries_rss_link([@content_first, @content_second, @content_third]), :class => 'rss' %>
+  <% end %>
+<% end %>
+
+<% content_for :content do %>
+
+  <% archive_html = archive_links([@content_first, @content_second, @content_third]) %>
+  <% if @right_side_navigation || @right_side_links || @right_side_charts || @right_side_facts || !archive_html.blank? %>
+    <div class="right_side">
+      <%= render(:partial => 'regions/right_side') %>
+      <% unless archive_html.blank? %>
+        <%= content_tag :div, archive_html, :class => "events_archive archive" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="article">
+    <%= render_partial_for_region(@content_first) %>
+    <%= render_partial_for_region(@content_second) %>
+    <%= render_partial_for_region(@content_third) %>
+    <%= render_empty_message([@content_first, @content_second, @content_third]) %>
+  </div>
+
+<% end %>
+
+<%= render :template => 'layouts/application' %>

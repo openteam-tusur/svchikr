@@ -1,0 +1,8 @@
+<% content_for :item_title do %>
+  <span class='item_title'><%= object.title %></span>
+<% end %>
+
+<div class="blue_pages">
+  <%= render :partial => 'commons/chief', :locals => { :object => object } %>
+  <%= raw object.dossier %>
+</div>

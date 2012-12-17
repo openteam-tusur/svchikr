@@ -1,0 +1,42 @@
+<%= content_for :content do %>
+  <%= @description.content.body.html_safe if @description %>
+  <div id="organization_structure">
+    <ul class="first no_need_links">
+      <li class="first_item">
+        <%= render :partial => 'organization_structure/superior', :locals => { :object => @content_first.content.items.first, :need_links => true } %>
+        <ul class="second">
+          <% @content_first.content.subdivisions.each do |subdivision| %>
+            <% if subdivision.title.match(/губернатор\b|заместител|управляющ/i) %>
+              <li class="second_item">
+                <% if subdivision.items.try(:any?) %>
+                  <%= render :partial => 'organization_structure/superior', :locals => { :object => subdivision.items.first, :need_links => subdivision.has_key?(:subdivisions) } %>
+                <% else %>
+                  <%= render :partial => 'organization_structure/fired_superior', :locals => { :object => subdivision } %>
+                <% end %>
+                <% if subdivision.has_key?(:subdivisions) %>
+                  <ul class="third">
+                    <% subdivision.subdivisions.each do |subdivision| %>
+                      <li class="third_item">
+                        <%= render :partial => 'organization_structure/subdivision', :locals => { :object => subdivision } %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% else %>
+              <li class='second_item no_margin'>
+                <%= render :partial => 'organization_structure/subdivision', :locals => { :object => subdivision } %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <%= render 'commons/social_links' %>
+<% end if @content_first && @content_first.type == 'BluePagesPart' %>
+
+<%= content_for :content do %>
+  <%= @description.content.body.html_safe if @description %>
+  <%= @content_first.content.body.html_safe %>
+<% end if @content_first && @content_first.type == 'HtmlPart' %>
