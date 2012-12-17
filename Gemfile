@@ -19,6 +19,7 @@ group :default do
   gem 'openteam-commons'
   gem 'rails'
   gem 'russian'
+  gem 'rvm-capistrano'
   gem 'sass-rails'
   gem 'stop_ie'
   gem 'uuid'
