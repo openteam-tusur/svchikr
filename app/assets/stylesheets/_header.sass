@@ -1,0 +1,38 @@
+.tinted_box_wrapper
+  background-color: #e3edff
+  border-bottom: 1px solid #eaf1fd
+  .tinted_box
+    width: 1000px
+    margin: 0 auto
+    +clearfix
+    li
+      float: left
+      line-height: 1.4
+      border-left: 1px solid #f3f7ff
+      +box-shadow(darken(#c4daff, 20) 1px 0 1px -1px inset)
+      padding: 4px 16px
+      &:last-child
+        border-right: 1px solid #f3f7ff
+        +box-shadow(darken(#c4daff, 20) 1px 0 1px -1px inset, darken(#c4daff, 20) 1px 0 1px -1px)
+    a
+      font-size: 11px
+      color: #315ba6
+      .uppercase
+        text-transform: uppercase
+      &:hover
+        text-decoration: none
+    .tusur a
+      text-decoration: none
+      display: block
+      width: 72px
+      height: 13px
+      +clearfix
+      text-indent: -9999em
+      background: transparent image_url('tusur_logo.png') no-repeat center center
+      margin-top: 2px
+    .rtf a
+      background: transparent image_url('rtf_logo.png') no-repeat left center
+      padding: 1px 0 1px 20px
+    .svchikr a
+      text-decoration: none
+      padding-top: 1px
