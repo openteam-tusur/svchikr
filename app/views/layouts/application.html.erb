@@ -1,33 +1,69 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang='ru'>
 <head>
-  <meta charset="UTF-8">
+  <meta charset='UTF-8'>
   <%= favicon_link_tag %>
   <title><%= strip_tags(@site_name.content.body) %></title>
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    'application', :media => 'all' %>
+  <%= javascript_include_tag 'application' %>
 
   <!--[if lte IE 7]>
-  <%= stylesheet_link_tag    "stop_ie/application" %>
-  <%= javascript_include_tag "stop_ie/application" %>
+  <%= stylesheet_link_tag    'stop_ie/application' %>
+  <%= javascript_include_tag 'stop_ie/application' %>
   <![endif]-->
 
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="tinted_box_wrapper">
-    <ul class="tinted_box">
-      <li class="tusur">
-        <a href="http://www.tusur.ru/">ТУСУР</a>
+  <div class='tinted_box_wrapper'>
+    <ul class='tinted_box'>
+      <li class='tusur'>
+        <a href='http://www.tusur.ru/'>ТУСУР</a>
       </li>
-      <li class="rtf">
-        <a href="http://www.tusur.ru/ru/faculties/rtf/"><span class='uppercase'>Радиотехнический факультет (РТФ)</span></a>
+      <li class='rtf'>
+        <a href='http://www.tusur.ru/ru/faculties/rtf/'><span class='uppercase'>Радиотехнический факультет (РТФ)</span></a>
       </li>
-      <li class="svchikr">
-        <a href="/"><span class='uppercase'>Кафедра</span> СВЧиКР</a>
+      <li class='svchikr'>
+        <a href='/'><span class='uppercase'>Кафедра</span> СВЧиКР</a>
       </li>
     </ul>
+  </div>
+  <div class='header'>
+    <div class='site_name'>
+      <h1><a href='/'>Кафедра сверхвысокочастотной и квантовой радиотехники (СВЧиКР)</a></h1>
+    </div>
+    <div class='language_and_search'>
+      <ul class='language'>
+        <li class='site_map'><a href='/siemap'>Карта сайта</a></li>
+        <li class='ru active'><a href='/ru'>Русский</a></li>
+        <li class='en'><a href='/en'>English</a></li>
+      </ul>
+      <div class='search_form'>
+        <form action='/ru/search/'>
+          <ul class='inputs'>
+            <li>
+              <input type='text' name='parts_params[search][q]' value='<%= params[:parts_params].try(:[], 'search').try(:[], 'q') %>' placeholder='Поиск' />
+            </li>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class='content_wrapper'>
+    content
+  </div>
+  <div class='footer_wrapper'>
+    <div class='footer'>
+      <div class='contacts'>
+        <p class='year'><%= (-> { Date.today.year }.call) %></p>
+        <p class='name'><a href='http://www.tusur.ru/'>ТУСУР</a>, Кафедра сверхвысокочастотной и квантовой радиотехники</p>
+        <p class='small'>Адрес: 634034, Томск-34, ул. Вершинина, 74, корпус РК</p>
+        <p class='small'>Тел./факс: (3822) 41-36-43</p>
+      </div>
+      <div class='openteam'>
+        <a href='http://www.tusur.ru/ru/informatization/subdivision/cvtir/'>OpenTeam</a>
+      </div>
+    </div>
   </div>
 </body>
 </html>

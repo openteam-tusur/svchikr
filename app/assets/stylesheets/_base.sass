@@ -4,3 +4,19 @@ body
   font-family: Verdana, Tahoma, Arial, sans-serif
   background-color: #6c8cc6
   +background-image(linear-gradient(left, #3e67b0, #6c8cc6 20%, #6c8cc6 80%, #3e67b0))
+
+a
+  color: #2c56a1
+  text-decoration: underline
+  &:hover
+    text-decoration: none
+
+=iconize_link($image_url, $width, $height)
+  text-decoration: none
+  display: block
+  width: $width
+  height: $height
+  +clearfix
+  text-indent: -9999em
+  background: transparent image_url($image_url) no-repeat center center
+  outline: none

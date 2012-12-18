@@ -22,13 +22,7 @@
       &:hover
         text-decoration: none
     .tusur a
-      text-decoration: none
-      display: block
-      width: 72px
-      height: 13px
-      +clearfix
-      text-indent: -9999em
-      background: transparent image_url('tusur_logo.png') no-repeat center center
+      +iconize_link('tusur_small_logo.png', 72px, 13px)
       margin-top: 2px
     .rtf a
       background: transparent image_url('rtf_logo.png') no-repeat left center
@@ -36,3 +30,61 @@
     .svchikr a
       text-decoration: none
       padding-top: 1px
+
+.header
+  width: 990px
+  margin: 10px auto 12px
+  +clearfix
+  .site_name
+    float: left
+    width: 410px
+    h1
+      a
+        display: block
+        font-size: 18px
+        line-height: 1.6
+        color: #fff
+        background: transparent image_url('tusur_big_logo.png') no-repeat left center
+        padding: 0 0 0 70px
+        text-decoration: none
+  .language_and_search
+    float: right
+    .language
+      float: right
+      line-height: 1.4
+      +clearfix
+      margin-bottom: 12px
+      .site_map
+        float: left
+        margin-right: 20px
+        a
+          color: #fff
+      .ru
+        float: left
+        margin: 4px 5px 0
+        a
+          +iconize_link('lang_ru.png', 16px, 11px)
+          background-position: 0 -11px
+        &.active a
+          background-position: 0 0
+      .en
+        float: left
+        margin: 4px 0 0
+        a
+          +iconize_link('lang_en.png', 16px, 11px)
+          background-position: 0 -11px
+        &.active a
+          background-position: 0 0
+    .search_form
+      float: right
+      clear: right
+      .inputs input
+        font-size: 12px
+        font-family: Arial, Verdana, Tahoma, sans-serif
+        width: 350px
+        border: 1px solid #6586c2
+        +border-radius(3px)
+        +box-shadow(#bcbcbc 0 0 8px inset)
+        background-color: #fff
+        text-align: right
+        padding: 4px 7px
