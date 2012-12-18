@@ -1,25 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang='ru'>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+  <meta charset='UTF-8'>
+  <link href='/favicon.ico' rel='shortcut icon' type='image/vnd.microsoft.icon' />
+  <title>Внутренняя ошибка сервера (500 ошибка) — Кафедра сверхвысокочастотной и квантовой радиотехники</title>
+  <link href='/assets/application.css?body=1' media='all' rel='stylesheet' type='text/css' />
+  <!--[if lte IE 7]>
+  <link href='/assets/stop_ie/application.css?body=1' media='screen' rel='stylesheet' type='text/css' />
+  <link href='/assets/stop_ie/stop_ie.css?body=1' media='screen' rel='stylesheet' type='text/css' />
+  <script src='/assets/jquery.js?body=1' type='text/javascript'></script>
+  <script src='/assets/stop_ie/stop_ie.js?body=1' type='text/javascript'></script>
+  <script src='/assets/stop_ie/application.js?body=1' type='text/javascript'></script>
+  <![endif]-->
 </head>
-
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+  <div class='tinted_box_wrapper'>
+    <ul class='tinted_box'>
+      <li class='tusur'>
+        <a href='http://www.tusur.ru/'>ТУСУР</a>
+      </li>
+      <li class='rtf'>
+        <a href='http://www.tusur.ru/ru/faculties/rtf/'><span class='uppercase'>Радиотехнический факультет (РТФ)</span></a>
+      </li>
+      <li class='svchikr'>
+        <a href='/'><span class='uppercase'>Кафедра</span> СВЧиКР</a>
+      </li>
+    </ul>
+  </div>
+  <div class='header'>
+    <div class='site_name'>
+      <h1><a href='/'>Кафедра сверхвысокочастотной и квантовой радиотехники (СВЧиКР)</a></h1>
+    </div>
+    <div class='language_and_search'>
+      <ul class='language'>
+        <li class='site_map'><a href='/siemap'>Карта сайта</a></li>
+        <li class='ru active'><a href='/ru'>Русский</a></li>
+        <li class='en'><a href='/en'>English</a></li>
+      </ul>
+      <div class='search_form'>
+        <form action='/ru/search/'>
+          <ul class='inputs'>
+            <li>
+              <input type='text' name='parts_params[search][q]' value='' placeholder='Поиск' />
+            </li>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class='content_wrapper'>
+    <div class='error_page'>
+      <h1>Внутренняя ошибка сервера (500 ошибка)</h1>
+      <p>Возникла внутренняя ошибка сервера. Сообщение об ошибке отправлено команде разработчиков. Если ошибка повторяется продолжительное время, сообшите об этом на адрес электронной почны <a href="mailto:developers@openteam.ru">developers@openteam.ru</a></p>
+    </div>
+  </div>
+  <div class='footer_wrapper'>
+    <div class='footer'>
+      <div class='contacts'>
+        <p class='year'>2012</p>
+        <p class='name'><a href='http://www.tusur.ru/'>ТУСУР</a>, Кафедра сверхвысокочастотной и квантовой радиотехники</p>
+        <p class='small'>Адрес: 634034, Томск-34, ул. Вершинина, 74, корпус РК</p>
+        <p class='small'>Тел./факс: (3822) 41-36-43</p>
+      </div>
+      <div class='openteam'>
+        <a href='http://www.tusur.ru/ru/informatization/subdivision/cvtir/'>OpenTeam</a>
+      </div>
+    </div>
   </div>
 </body>
 </html>
