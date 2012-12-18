@@ -11,9 +11,3 @@ errors:
 
 storage:
   url:          http://site.com
-
-deploy:
-  gateway:      user@host
-  domain:       user@host
-  application:  appname.ru
-  port:         port

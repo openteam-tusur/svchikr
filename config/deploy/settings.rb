@@ -1,4 +1,4 @@
-settings_yml_path = "config/settings.yml"
+settings_yml_path = "config/deploy.yml"
 config = YAML::load(File.open(settings_yml_path))
 raise "not found deploy key in settings.yml. see settings.yml.example" unless config['deploy']
 application = config['deploy']["application"]
@@ -20,7 +20,7 @@ set :use_sudo, false
 set :unicorn_instance_name, "unicorn"
 
 set :scm, :git
-set :repository, "git@github.com:openteam-esp/directory.git"
+set :repository, "git://github.com/openteam-tusur/svchikr.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 

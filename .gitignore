@@ -17,5 +17,6 @@
 
 /bin
 /config/settings.yml
+/config/deploy.yml
 /public/assets
 *.swp
