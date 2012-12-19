@@ -1,7 +1,17 @@
 .content_wrapper
   width: 1000px
-  margin: 2px auto
   +min-height(400px)
   background-color: #fff
   +border-radius(3px)
   +box-shadow(#777 0 0 6px)
+  padding-bottom: 15px
+  margin: 0 auto
+  .content
+    margin: 20px 20px 5px
+    line-height: 1.4
+    @for $i from 1 through 3
+      h#{$i}
+        font-size: 22px - 2 * $i
+        margin-bottom: 15px
+    p
+      margin-bottom: 15px

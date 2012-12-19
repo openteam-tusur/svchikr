@@ -2,18 +2,36 @@
   background-color: #e3edff
   border-bottom: 1px solid #eaf1fd
   .tinted_box
+    +clearfix
     width: 1000px
     margin: 0 auto
-    +clearfix
+    padding-left: 1px
     li
       float: left
       line-height: 1.4
-      border-left: 1px solid #f3f7ff
-      +box-shadow(darken(#c4daff, 20) 1px 0 1px -1px inset)
+      border-left: 1px solid #c7dbff
+      border-right: 1px solid #f3f7ff
       padding: 4px 16px
+      &:first-child
+        position: relative
+        &:before
+          border-left: 1px solid #f3f7ff
+          content: ''
+          top: 0
+          left: -2px
+          width: 0
+          height: 100%
+          position: absolute
       &:last-child
-        border-right: 1px solid #f3f7ff
-        +box-shadow(darken(#c4daff, 20) 1px 0 1px -1px inset, darken(#c4daff, 20) 1px 0 1px -1px)
+        position: relative
+        &:before
+          border-right: 1px solid #c7dbff
+          content: ''
+          top: 0
+          right: -2px
+          width: 0
+          height: 100%
+          position: absolute
     a
       font-size: 11px
       color: #315ba6
