@@ -1,5 +1,11 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  tinted_box:
+    tusur: "TUCSR"
+    rtf: "<span class='uppercase'>Faculty of Radio Engineering (RTF)</span>"
+    svchikr: "<span class='uppercase'>Department</span> SVChiKR"
+  site_name: "Department of Microwave and Quantum Radio Engineering (SVChiKR)"
+  sitemap: "Sitemap"
+  locale:
+    ru: "Русский"
+    en: "English"
+  placeholder: "Search"

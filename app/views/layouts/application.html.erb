@@ -3,104 +3,45 @@
 <head>
   <meta charset='UTF-8'>
   <%= favicon_link_tag %>
-  <title><%= strip_tags(@site_name.content.body) %></title>
-
+  <title><%= raw @page_title %> — <%= strip_tags(@site_name.content.body) %></title>
   <%= stylesheet_link_tag    'application', :media => 'all' %>
   <%= javascript_include_tag 'application' %>
-
   <!--[if lte IE 7]>
   <%= stylesheet_link_tag    'stop_ie/application' %>
   <%= javascript_include_tag 'stop_ie/application' %>
   <![endif]-->
-
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class='tinted_box_wrapper'>
     <ul class='tinted_box'>
-      <li class='tusur'>
-        <a href='http://www.tusur.ru/'>ТУСУР</a>
-      </li>
-      <li class='rtf'>
-        <a href='http://www.tusur.ru/ru/faculties/rtf/'><span class='uppercase'>Радиотехнический факультет (РТФ)</span></a>
-      </li>
-      <li class='svchikr'>
-        <a href='/'><span class='uppercase'>Кафедра</span> СВЧиКР</a>
-      </li>
+      <li class='tusur'><a href='http://www.tusur.ru/'><%= I18n.t('tinted_box.tusur') %></a></li>
+      <li class='rtf'><a href='http://www.tusur.ru/ru/faculties/rtf/'><%= I18n.t('tinted_box.rtf').html_safe %></a></li>
+      <li class='svchikr'><a href='/'><%= I18n.t('tinted_box.svchikr').html_safe %></a></li>
     </ul>
   </div>
   <div class='header'>
     <div class='site_name'>
-      <h1><a href='/'>Кафедра сверхвысокочастотной и квантовой радиотехники (СВЧиКР)</a></h1>
+      <h1><a href='/'><%= I18n.t('site_name') %></a></h1>
     </div>
     <div class='language_and_search'>
       <ul class='language'>
-        <li class='site_map'><a href='/ru/sitemap'>Карта сайта</a></li>
-        <li class='ru active'><a href='/ru'>Русский</a></li>
-        <li class='en'><a href='/en'>English</a></li>
+        <%= sitemap_link %>
+        <%= languages_links %>
       </ul>
       <div class='search_form'>
         <form action='/ru/search/'>
           <ul class='inputs'>
             <li>
-              <input type='text' name='parts_params[search][q]' value='<%= params[:parts_params].try(:[], 'search').try(:[], 'q') %>' placeholder='Поиск' />
+              <input type='text' name='parts_params[search][q]' value='<%= params[:parts_params].try(:[], 'search').try(:[], 'q') %>' placeholder='<%= I18n.t('placeholder') %>' />
             </li>
+          </ul>
         </form>
       </div>
     </div>
   </div>
   <div class='content_wrapper'>
-    <ul class='main_navigation'>
-      <li>
-        <a href='#'>О кафедре</a>
-        <ul class='sub_navigation'>
-          <li><a href='#'>История кафедры</a></li>
-          <li><a href='#'>Документы</a></li>
-          <li><a href='#'>Сотрудники</a></li>
-          <li><a href='#'>Истории успеха выпускников</a></li>
-          <li><a href='#'>Организации-партнеры</a></li>
-          <li><a href='#'>Международная деятельность</a></li>
-          <li><a href='#'>Вакансии</a></li>
-          <li><a href='#'>Контактная информация</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href='#'>Абитуриенту</a>
-        <ul class='sub_navigation'>
-          <li><a href='#'>Список направлений подготовки, по которым ведется набор</a></li>
-          <li><a href='#'>Контакты членов отборочной комиссии факультета</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href='#'>Образование</a>
-        <ul class='sub_navigation'>
-          <li><a href='#'>Специальности и направления подготовки</a></li>
-          <li><a href='#'>Магистратура</a></li>
-          <li><a href='#'>Дисциплины, обеспечиваемые кафедрой</a></li>
-          <li><a href='#'>Групповое проектное обучение</a></li>
-          <li><a href='#'>Дистанционное образование</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href='#'>Наука</a>
-        <ul class='sub_navigation'>
-          <li><a href='#'>Направления научной работы кафедры</a></li>
-          <li><a href='#'>Научно-исследовательская работа студентов</a></li>
-          <li><a href='#'>Аспирантура, докторантура</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href='#'>Инновации</a>
-        <ul class='sub_navigation'>
-          <li><a href='#'>Список студентов-участников проектов СБИ и ТБИ</a></li>
-          <li><a href='#'>Комплексные проекты по созданию высокотехнологичных производств</a></li>
-          <li><a href='#'>Список инновационных компаний, созданных с участием кафедры</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href='#'>Новости</a>
-      </li>
-    </ul>
+    <%= render "regions/main_#{@main_navigation.type.underscore}", :object => @main_navigation.content if @main_navigation %>
     <div class='content'>
       <h1>Тема: «Почему традиционен восстановитель?»</h1>
 
