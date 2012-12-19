@@ -1,6 +1,6 @@
 en:
   tinted_box:
-    tusur: "TUCSR"
+    tusur: "TUSUR"
     rtf: "<span class='uppercase'>Faculty of Radio Engineering (RTF)</span>"
     svchikr: "<span class='uppercase'>Department</span> SVChiKR"
   site_name: "Department of Microwave and Quantum Radio Engineering (SVChiKR)"
@@ -9,3 +9,8 @@ en:
     ru: "Русский"
     en: "English"
   placeholder: "Search"
+  footer:
+    tusur: "TUSUR"
+    svchikr: "Department of Microwave and Quantum Radio Engineering"
+    address: "Address: 634034, Tomsk, st. Vershinin, 74, the case of RK"
+    phone: "Tel./Fax: (3822) 41-36-43"

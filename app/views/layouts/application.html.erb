@@ -58,9 +58,9 @@
     <div class='footer'>
       <div class='contacts'>
         <p class='year'><%= (-> { Date.today.year }.call) %></p>
-        <p class='name'><a href='http://www.tusur.ru/'>ТУСУР</a>, Кафедра сверхвысокочастотной и квантовой радиотехники</p>
-        <p class='small'>Адрес: 634034, Томск-34, ул. Вершинина, 74, корпус РК</p>
-        <p class='small'>Тел./факс: (3822) 41-36-43</p>
+        <p class='name'><a href='http://www.tusur.ru/'><%= I18n.t('footer.tusur') %></a>, <%= I18n.t('footer.svchikr') %></p>
+        <p class='small'><%= I18n.t('footer.address') %></p>
+        <p class='small'><%= I18n.t('footer.phone') %></p>
       </div>
       <div class='openteam'>
         <a href='http://www.tusur.ru/ru/informatization/subdivision/cvtir/'>OpenTeam</a>
