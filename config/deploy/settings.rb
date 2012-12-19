@@ -17,7 +17,7 @@ set :ssh_options, { :forward_agent => true }
 set :rails_env, "production"
 set :deploy_to, "/srv/#{application}"
 set :use_sudo, false
-set :unicorn_instance_name, "unicorn"
+set :unicorn_instance_name, "unicorn_svchikr"
 
 set :scm, :git
 set :repository, "git://github.com/openteam-tusur/svchikr.git"
