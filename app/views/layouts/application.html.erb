@@ -30,7 +30,7 @@
         <%= languages_links %>
       </ul>
       <div class='search_form'>
-        <form action='/ru/search/'>
+        <form action='/<%= I18n.locale %>/search/'>
           <ul class='inputs'>
             <li>
               <input type='text' name='parts_params[search][q]' value='<%= params[:parts_params].try(:[], 'search').try(:[], 'q') %>' placeholder='<%= I18n.t('placeholder') %>' />
