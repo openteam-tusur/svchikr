@@ -17,12 +17,12 @@
     <ul class='tinted_box'>
       <li class='tusur'><a href='http://www.tusur.ru/'><%= I18n.t('tinted_box.tusur') %></a></li>
       <li class='rtf'><a href='http://www.tusur.ru/ru/faculties/rtf/'><%= I18n.t('tinted_box.rtf').html_safe %></a></li>
-      <li class='svchikr'><a href='/'><%= I18n.t('tinted_box.svchikr').html_safe %></a></li>
+      <li class='svchikr'><a href='/<%= I18n.locale %>/'><%= I18n.t('tinted_box.svchikr').html_safe %></a></li>
     </ul>
   </div>
   <div class='header'>
     <div class='site_name'>
-      <h1><a href='/'><%= I18n.t('site_name') %></a></h1>
+      <h1><a href='/<%= I18n.locale %>/'><%= I18n.t('site_name') %></a></h1>
     </div>
     <div class='language_and_search'>
       <ul class='language'>
