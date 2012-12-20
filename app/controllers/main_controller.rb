@@ -11,7 +11,7 @@ class MainController < ApplicationController
 
     @page_title = page.title
 
-    render "templates/#{page.template}", layout: false
+    render "templates/#{page.template}"
   end
 
   private
