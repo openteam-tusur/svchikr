@@ -24,8 +24,14 @@ module ApplicationHelper
     end
   end
 
-  def person_building_full_address(person)
-    content_tag :p, person.building_full_address if person.building_full_address.present?
+  def person_short_address(person)
+    return if person.office.blank? || person.building.blank?
+    content_tag :p, "#{person.building.address}, #{person.office}"
+  end
+
+  def person_full_address(person)
+    return if person.office.blank? || person.building.blank?
+    content_tag :p, "#{person.building.locality}, #{person.building.address} (#{person.building.downcased_title}), #{person.office}"
   end
 
   def person_contacts(person)
