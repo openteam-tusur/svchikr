@@ -30,23 +30,7 @@ module ApplicationHelper
 
   def person_contacts(person)
     content = ''
-    person.phones.group_by{|phone| phone[:kind_text]}.each do |kind_text, phones|
-      content << kind_text.gsub('Городской', 'Тел.: ')
-                          .gsub('Внутренний', 'Внут.: ')
-                          .gsub('Сотовый', 'Сот.: ')
-                          .gsub('Факс', 'Факс: ')
-      phones.each do |phone|
-        case phone.kind_text
-        when 'Городской', 'Факс'
-          content << "(#{phone.code}) #{phone.number[0..1]}-#{phone.number[2..3]}-#{phone.number[4..5]}, "
-        when 'Внутренний'
-          content << "#{phone.number}, "
-        when 'Сотовый'
-          content << "#{phone.number[0..2]}-#{phone.number[3..5]}-#{phone.number[6..7]}-#{phone.number[8..9]}, "
-        end
-      end
-      content = content.squish.gsub(/,$/, '; ')
-    end
+    content << person.phones
     content << person.emails.map{ |email| mail_to(email.value) }.join(', ')
     content_tag :p, content.squish.gsub(/;$/, '').html_safe if content.present?
   end
