@@ -1,0 +1,8 @@
+<% content_for :content do %>
+  <% if @content_first %>
+    <h1><%= I18n.t('sitemap') %></h1>
+    <div class="sitemap">
+      <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content.values.first['children'] %>
+    </div>
+  <% end %>
+<% end %>
