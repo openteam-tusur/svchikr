@@ -119,12 +119,14 @@
   text-align: center
   width: 100%
   color: #333
+  height: 13px
   font-weight: bold
 
 #cboxCurrent
   position: absolute
   bottom: 0px
-  left: 182px
+  left: 55px
+  font-size: 0.9em
   color: #999
 
 #cboxSlideshow
@@ -138,12 +140,22 @@
   bottom: 0px
   left: 0
   color: #444
+  width: 16px
+  height: 12px
+  overflow: hidden
+  text-indent: -9999em
+  background: transparent image_url('colorbox/prev.png') no-repeat center center
 
 #cboxNext
   position: absolute
   bottom: 0px
-  left: 95px
+  left: 26px
   color: #444
+  width: 16px
+  height: 12px
+  overflow: hidden
+  text-indent: -9999em
+  background: transparent image_url('colorbox/next.png') no-repeat center center
 
 #cboxLoadingOverlay
   background: white image_url('colorbox/loading.gif') no-repeat 5px 5px
@@ -154,6 +166,11 @@
   right: 0
   display: block
   color: #444
+  width: 12px
+  height: 12px
+  overflow: hidden
+  text-indent: -9999em
+  background: transparent image_url('colorbox/close.png') no-repeat center center
 
 /*
  *The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
