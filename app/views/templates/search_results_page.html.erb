@@ -1,8 +1,8 @@
 <% content_for :content do %>
-  <% if @content_first %>
+  <% if @content %>
     <div class='search_total_count'>
-      <%= t('search_total_count') %>: <strong><%= @content_first.content.pagination.total_count %></strong>
+      <%= t('search_total_count') %>: <strong><%= @content.content.pagination.total_count %></strong>
     </div>
   <% end %>
-  <%= render_partial_for_region(@content_first) %>
+  <%= render_partial_for_region(@content) %>
 <% end %>

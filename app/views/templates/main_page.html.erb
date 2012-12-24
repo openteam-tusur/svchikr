@@ -1,8 +1,9 @@
 <%= content_for :content do %>
   <div class='about_department index'>
     <div class='information'>
-      <%= render_partial_for_region @content_first %>
+      <%= render_partial_for_region @content %>
     </div>
     <%= content_tag(:div, render(:partial => 'regions/chief_department'), class: :chief_department) if @chief_department.present? %>
   </div>
+  <%= content_tag(:div, render(:partial => 'regions/actual_info'), class: :actual_info) if @actual_info.present? %>
 <% end %>
