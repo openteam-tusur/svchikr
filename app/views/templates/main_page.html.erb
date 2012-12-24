@@ -3,8 +3,6 @@
     <div class='information'>
       <%= render_partial_for_region @content_first %>
     </div>
-    <div class='chief_department'>
-      <%= render :partial => 'regions/chief_department' if @chief_department %>
-    </div>
+    <%= content_tag(:div, render(:partial => 'regions/chief_department'), class: :chief_department) if @chief_department.present? %>
   </div>
 <% end %>

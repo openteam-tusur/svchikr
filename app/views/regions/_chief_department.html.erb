@@ -29,16 +29,19 @@
   </dl>
 <% end %>
 
-<div class='chief'>
-  <div class='title'>
-    <h2><%= @chief_department.content.title.mb_chars.capitalize %></h2>
-    <p class='name'><%= link_to @chief_department.part_title, '/ru/o-kafedre/sotrudniki/prosmotr-sotrudnika/-/160' %></p>
+<% if @chief_department.present? %>
+  <div class='chief'>
+    <div class='title'>
+      <h2><%= @chief_department.content.title.mb_chars.capitalize %></h2>
+      <div class='name'><%= link_to @chief_department.part_title, '/ru/o-kafedre/sotrudniki/prosmotr-sotrudnika/-/160' %></div>
+      <%= content_tag(:div, @chief_department.content.person_academic_titles, class: :degree) if @chief_department.content.person_academic_titles.present? %>
+    </div>
+    <div class='photo'>
+      <% if @chief_department.content.person_photo_url.present? %>
+        <%= image_tag @chief_department.content.person_photo_url, size: '100x133', alt: @chief_department.part_title %>
+      <% else %>
+        <%= image_tag 'chief_stub.png', size: '100x133', alt: @chief_department.part_title %>
+      <% end %>
+    </div>
   </div>
-  <div class='photo'>
-    <% if @chief_department.content.person_photo_url.present? %>
-      <%= image_tag @chief_department.content.person_photo_url, size: '100x133', alt: @chief_department.part_title %>
-    <% else %>
-      <%= image_tag 'chief_stub.png', size: '100x133', alt: @chief_department.part_title %>
-    <% end %>
-  </div>
-</div>
+<% end %>
