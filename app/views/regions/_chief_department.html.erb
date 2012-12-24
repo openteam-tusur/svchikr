@@ -1,0 +1,44 @@
+<h1>Контакты</h1>
+
+<% if @chief_department.content.building.present? %>
+  <dl class='address'>
+    <dt>Адрес:</dt>
+    <dd>
+      <%= @chief_department.content.building.locality %>,
+      <%= @chief_department.content.building.address %>,
+      <%= @chief_department.content.office %>
+    </dd>
+  </dl>
+<% end %>
+
+<% if @chief_department.content.phones.present? %>
+  <div class='phones'>
+    <% @chief_department.content.phones.squish.gsub(/;$/, '').split(';').each do |phone| %>
+      <dl class='phone'>
+        <dt><%= phone.squish.split(':')[0].mb_chars.capitalize %>:</dt>
+        <dd><%= phone.squish.split(':')[1] %></dd>
+      </dl>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @chief_department.content.emails.present? %>
+  <dl class='emails'>
+    <dt>E-mail:</dt>
+    <dd><%= @chief_department.content.emails.map{ |email| mail_to email.value }.join(', ').html_safe %></dd>
+  </dl>
+<% end %>
+
+<div class='chief'>
+  <div class='title'>
+    <h2><%= @chief_department.content.title.mb_chars.capitalize %></h2>
+    <p class='name'><%= link_to @chief_department.part_title, '/ru/o-kafedre/sotrudniki/prosmotr-sotrudnika/-/160' %></p>
+  </div>
+  <div class='photo'>
+    <% if @chief_department.content.person_photo_url.present? %>
+      <%= image_tag @chief_department.content.person_photo_url, size: '100x133', alt: @chief_department.part_title %>
+    <% else %>
+      <%= image_tag 'chief_stub.png', size: '100x133', alt: @chief_department.part_title %>
+    <% end %>
+  </div>
+</div>
