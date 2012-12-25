@@ -3,7 +3,7 @@
     <div class='information'>
       <%= render_partial_for_region @content %>
     </div>
-    <%= content_tag(:div, render(:partial => 'regions/chief_department'), class: :chief_department) if @chief_department.present? %>
+    <%= content_tag(:div, render(:partial => 'regions/chief_department'), class: 'chief_department') if @chief_department.present? %>
   </div>
-  <%= content_tag(:div, render(:partial => 'regions/actual_info'), class: :actual_info) if @actual_info.present? %>
+  <%= content_tag(:div, render(:partial => 'regions/actual_info'), class: 'actual_info index') if @actual_info.present? %>
 <% end %>

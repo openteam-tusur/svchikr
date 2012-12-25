@@ -1,5 +1,6 @@
 @init_gallery = () ->
   images = $('.content a > img')
+  return true if images.closest('.actual_info').length
   images.each (index, item) ->
     $(this).parent('a')
       .attr('rel', 'gallery')
