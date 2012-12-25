@@ -1,4 +1,4 @@
-.content
+.content_wrapper .content .main_page
   .about_department
     +clearfix
     .information
@@ -54,6 +54,51 @@
     background-color: #f1f6fc
     padding: 15px 15px 0 15px
     font-size: 14px
+    margin-top: 10px
+    img
+      border-color: #fff
+      +border-radius(0)
+    .floatl,
+    .floztr
+      margin-bottom: 15px
     a
       color: #333
       font-size: 16px
+
+  .news_list
+    +clearfix
+    margin: 20px 0 0
+    li
+      list-style: none
+      float: left
+      width: 465px
+      border-top: 1px solid #f2eeef
+      margin-bottom: 15px
+      padding-top: 15px
+      &.first
+        clear: left
+        margin-right: 30px
+      &:nth-child(1),
+      &:nth-child(2)
+        border-top: none
+        padding-top: 0
+      .title
+        +clearfix
+        margin-bottom: 10px
+        .date
+          float: left
+          text-align: center
+          width: 70px
+          margin-right: 10px
+          .day
+            font-size: 22px
+            line-height: 1.1
+            margin-bottom: 0
+          .month
+            font-size: 14px
+            font-weight: bold
+            margin-bottom: 0
+        .link
+          float: left
+          width: 385px
+          font-size: 15px
