@@ -51,7 +51,7 @@
     <div class="galleria_wrapper">
       <div id="galleria">
         <% object.content.images.each do |image| %>
-          <%= galleria_link(image) %>
+          <%= image_tag image.thumbnail.url, :alt => image.description, :width => image.thumbnail.width, :height => image.thumbnail.height %>
         <% end %>
       </div>
     </div>

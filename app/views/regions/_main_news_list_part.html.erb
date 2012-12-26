@@ -10,7 +10,10 @@
           <%= truncate_entry_link(item) %>
         </div>
         <div class='text'>
-          <%#= image_tag 'stub-1.jpg', size: '100x100', class: :floatr %>
+          <% if item.images.present? %>
+            <% thumb = item.images.first.thumbnail %>
+            <%= image_tag thumb.url, size: "#{thumb.width}x#{thumb.height}", alt: thumb.description, class: :floatr %>
+          <% end %>
           <%= item.annotation.html_safe %>
         </div>
       </li>
