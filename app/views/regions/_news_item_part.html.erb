@@ -1,19 +1,19 @@
 <% unless object.blank? %>
   <div class="right_side noindex" style='overflow: hidden'>
-    <%  if object.images.any? %>
+    <%  if object.content.images.any? %>
       <div class="entry_image">
-        <%= image_tag object.images.first.thumbnail.url, :alt => object.images.first.description, :width => object.images.first.thumbnail.width, :height => object.images.first.thumbnail.height %>
+        <%= image_tag object.content.images.first.thumbnail.url, :alt => object.content.images.first.description, :width => object.content.images.first.thumbnail.width, :height => object.content.images.first.thumbnail.height %>
         <div class="description">
-          <%= object.images.first.description %>
+          <%= object.content.images.first.description %>
         </div>
       </div>
     <% end %>
 
-    <% if object.more_like_this %>
+    <% if object.content.more_like_this %>
       <div class="more_like_this noindex">
         <h2>Другие новости</h2>
         <ul>
-          <% object.more_like_this.each do |item| %>
+          <% object.content.more_like_this.each do |item| %>
             <li>
               <div class="date">
                 <%= l item.since.to_date, :format => :long %>
@@ -27,30 +27,30 @@
   </div>
 
   <div class="date">
-    <%= l object.since.to_date, :format => :long %>
+    <%= l object.content.since.to_date, :format => :long %>
   </div>
 
   <div class="annotation_on_show">
-    <%= raw object.annotation %>
+    <%= raw object.content.annotation %>
   </div>
 
-  <%= raw object.body %>
+  <%= raw object.content.body %>
 
-  <% if object.source.present? %>
+  <% if object.content.source.present? %>
     <div class="source">
       <strong>Источник:</strong>
-      <% unless object.source_link.blank? %>
-        <%= link_to object.source, object.source_link, :target => :_blank, :rel => :nofollow %>
+      <% unless object.content.source_link.blank? %>
+        <%= link_to object.content.source, object.source_link, :target => :_blank, :rel => :nofollow %>
       <% else %>
-        <%= object.source %>
+        <%= object.content.source %>
       <% end %>
     </div>
   <% end %>
 
-  <% if object.images && object.images.many? %>
+  <% if object.content.images && object.content.images.many? %>
     <div class="galleria_wrapper">
       <div id="galleria">
-        <% object.images.each do |image| %>
+        <% object.content.images.each do |image| %>
           <%= galleria_link(image) %>
         <% end %>
       </div>
