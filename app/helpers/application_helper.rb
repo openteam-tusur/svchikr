@@ -15,6 +15,17 @@ module ApplicationHelper
     res.html_safe
   end
 
+  def render_navigation(hash)
+    return '' if hash.nil? || hash.empty?
+    content_tag :ul do
+      hash.map do |key, value|
+        content_tag :li, :class => value['selected'] ? 'selected' : nil do
+          link_to(value['title'], value['path']) + render_navigation(value['children'])
+        end
+      end.join("\n").html_safe
+    end
+  end
+
   def render_partial_for_region(region)
     if region && (region.response_status == 200 || !region.response_status?)
       render :partial => "regions/#{region.template}",
@@ -55,15 +66,19 @@ module ApplicationHelper
     content_tag :p, content.squish.gsub(/;$/, '').html_safe if content.present?
   end
 
-  def render_navigation(hash)
-    return '' if hash.nil? || hash.empty?
-    content_tag :ul do
-      hash.map do |key, value|
-        content_tag :li, :class => value['selected'] ? 'selected' : nil do
-          link_to(value['title'], value['path']) + render_navigation(value['children'])
-        end
-      end.join("\n").html_safe
+  def parse_entry_date(item)
+    date = I18n.l(Date.parse(item.since), format: '%d %B')
+    { day: date.split(' ')[0], month: date.split(' ')[1] }
+  end
+
+  def truncate_entry_link(item, length = 80)
+    link = ''
+    if item.title.length > length
+      link << link_to(truncate(item.title, length: length, separator: ' '), item.link, title: item.title)
+    else
+      link << link_to(item.title, item.link)
     end
+    content_tag :div, link.html_safe, class: :link
   end
 
 end
