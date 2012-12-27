@@ -1,3 +1,4 @@
 <%= content_for :content do %>
+  <%= content_tag(:div, render(:partial => 'regions/right_side_info'), class: 'right_side_info') if @right_side_info.present? %>
   <%= render_partial_for_region @content %>
 <% end %>
