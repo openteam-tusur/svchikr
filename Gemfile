@@ -2,7 +2,8 @@ source :rubygems
 
 group :assets do
   gem 'coffee-rails'
-  gem 'therubyracer'         unless RUBY_PLATFORM =~ /freebsd/
+  gem 'libv8',              '~> 3.11.8.12'
+  gem 'therubyracer'        unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'
 end
 
@@ -15,7 +16,6 @@ group :default do
   gem 'hashie'
   gem 'jquery-rails'
   gem 'kaminari'
-  gem 'libv8'
   gem 'openteam-commons'
   gem 'rails'
   gem 'russian'
