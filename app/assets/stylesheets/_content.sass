@@ -37,10 +37,18 @@
       margin-bottom: 15px
 
     ul
-      margin: 0 0 15px 20px
+      margin: 0 0 15px 0
       li
-        list-style: square
+        +clearfix
         margin-bottom: 5px
+        padding-left: 20px
+        &:before
+          content: '\25cf'
+          width: 0
+          color: #707070
+          position: relative
+          float: left
+          left: -15px
 
     ol
       margin: 0 0 15px 20px
@@ -52,9 +60,12 @@
       width: 100%
       margin-bottom: 15px
       td, th
-        padding: 5px
+        padding: 5px 8px
+        border: 1px solid #e3e3e3
         p
           margin-bottom: 0
+      th
+        background-color: #f7f7f7
 
     img
       border: 3px solid #f1f5fe
