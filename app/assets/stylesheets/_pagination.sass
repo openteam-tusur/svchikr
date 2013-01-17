@@ -1,2 +1,33 @@
 .content_wrapper .content .pagination
   text-align: center
+  font-size: 16px
+  span, a
+    +inline-block
+    margin: 0 3px
+  span a
+    display: inline
+    vertical-align: baseline
+    margin: 0
+    zoom: normal
+  a.prev,
+  a.next
+    color: #eb7907
+    text-decoration: none
+  span.prev,
+  span.next
+    color: #b1b1b1
+  .current
+    font-weight: bold
+  .prev,
+  .next
+    width: 8px
+    text-indent: -9999em
+    background: transparent image_url('pagination.png') no-repeat 0 7px
+  a.prev
+    background-position: 0 7px
+  a.next
+    background-position: -15px 7px
+  span.prev
+    background-position: 0 -11px
+  span.next
+    background-position: -15px -11px
