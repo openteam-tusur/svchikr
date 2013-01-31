@@ -2,11 +2,13 @@
   images = $('.content a > img')
   return true if images.closest('.actual_info').length
   images.each (index, item) ->
-    $(this).parent('a')
-      .attr('rel', 'gallery')
-      .attr('title', $(this).attr('title'))
+    href = $(item).parent('a').attr('href')
+    if href.endsWith(/[\.png|\.jpg|\.jpeg]$/i)
+      $(this).parent('a')
+        .attr('rel', 'gallery')
+        .attr('title', $(this).attr('title'))
     true
-  images.parent('a').colorbox
+  $(images).parent('a[rel=gallery]').colorbox
     'maxWidth': '90%'
     'maxHeight': '98%'
     'opacity': '0.5'
