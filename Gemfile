@@ -1,9 +1,9 @@
-source :rubygems
+source 'http://rubygems.org'
 
 group :assets do
   gem 'coffee-rails'
-  gem 'therubyracer',        :platforms => :ruby, :require => 'v8'
-  gem 'libv8',               '~> 3.11.8'   unless RUBY_PLATFORM =~ /freebsd/
+  gem 'therubyracer',       :platforms => :ruby, :require => 'v8'
+  gem 'libv8',              '~> 3.11.8'   unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'
 end
 
@@ -17,10 +17,12 @@ group :default do
   gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails'
+  gem 'rails',              '~> 3.2.12'
   gem 'russian'
   gem 'rvm-capistrano'
   gem 'sass-rails'
   gem 'stop_ie'
   gem 'uuid'
 end
+
+gem 'brakeman', :group => :development
