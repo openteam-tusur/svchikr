@@ -17,7 +17,7 @@ group :default do
   gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails',              '~> 3.2.12'
+  gem 'rails',              '~> 3.2.13'
   gem 'russian'
   gem 'rvm-capistrano'
   gem 'sass-rails'
