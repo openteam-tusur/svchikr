@@ -1,0 +1,112 @@
+.person_list
+  +clearfix
+  width: 100%
+
+
+.person_item
+  float: left
+  margin: 0 !important
+  padding: 0 !important
+  width: 50%
+
+  &.left
+    .person_wrapper
+      +clearfix
+      margin: 0 10px 40px 0
+
+  &.right
+    .person_wrapper
+      +clearfix
+      margin: 0 0 40px 10px
+
+  .photo
+    float: left
+    margin: 0 15px 0 0
+
+    a, img, span
+      display: block
+
+  .info
+    +clearfix
+
+    .full_name
+      +inline-block
+      font-size: 16px
+      line-height: 22px
+
+    .post
+      font-size: 14px
+      color: #7c7c7c
+      display: block
+      margin: 0 0 15px 0
+
+    .address, .phones, .emails
+      background: image_url('contact_icons.png') no-repeat
+      display: block
+      line-height: 20px
+      height: 20px
+      margin: 0 0 5px 0
+      padding: 0 0 0 25px
+
+    .address
+      background-position: 0 -38px
+
+    .emails
+      background-position: 0 -19px
+
+    .phones
+      background-position: 0 0px
+
+.person_wrapper
+  .person_info
+    +clearfix
+    +border-radius(3px)
+    background: #f7f7f7
+    border: 1px solid #e3e3e3
+    padding: 10px
+
+    .photo
+      float: left
+      margin: 0 10px 0 0
+
+      img
+        display: block
+        height: 266px
+        width: 200px
+
+    .info
+      +clearfix
+
+      .post
+        color: #7c7c7c
+        font-size: 18px
+        margin: 0 0 15px 0
+
+      .address, .phones, .emails
+        background: image_url('contact_icons.png') no-repeat
+        display: block
+        line-height: 20px
+        height: 20px
+        margin: 0 0 5px 0
+        padding: 0 0 0 25px
+
+      .address
+        background-position: 0 -38px
+
+      .emails
+        background-position: 0 -19px
+
+      .phones
+        background-position: 0 0px
+
+  .dossier
+    line-height: 20px
+    margin: 25px 0 0 0
+
+    p
+      margin: 0
+
+    span
+      +inline-block
+      margin: 0 0 5px 0
+      text-indent: 20px

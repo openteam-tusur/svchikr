@@ -1,7 +1,21 @@
-<div class='index'>
+<div class='index person_wrapper'>
   <h1><%= object.part_title %></h1>
-  <p><%= object.content.title %></p>
-  <%= person_full_address(object.content) %>
-  <%= person_contacts(object.content) %>
-  <%= person_additional_contacts(object.content) %>
+
+  <div class="person_info">
+    <div class="photo">
+      <%= photo_tag :url => object.content.person_photo_url, :title => object.content.person_full_name, :size => '200x266' %>
+    </div>
+    <div class="info">
+      <div class="post"><%= object.content.title %></div>
+      <%= person_contacts(object.content) %>
+      <div class="address"><%= person_full_address(object.content) %></div>
+    </div>
+  </div>
+
+  <% if object.content.person_bio %>
+    <div class="dossier">
+      <h3>Биография</h3>
+      <%= simple_format object.content.person_bio %>
+    </div>
+  <% end %>
 </div>

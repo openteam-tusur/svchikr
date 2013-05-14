@@ -1,13 +1,21 @@
 <div class='index'>
   <h1><%= object.part_title %></h1>
-  <ul class='presentation'>
+  <ul class='presentation person_list'>
     <% object.content.each do |person| %>
-      <li>
-        <p><%= link_to person.person_full_name, person.link %></p>
-        <p><%= person.title %></p>
-        <%= person_short_address(person) %>
-        <%= person_contacts(person) %>
-        <%= person_additional_contacts(person) %>
+      <li class='person_item <%= cycle('left', 'right') %>'>
+        <div class="person_wrapper">
+          <div class="photo">
+            <%= link_to person.link, :class => 'no_cbox' do %>
+              <%= photo_tag :url => person.person_photo_url, :title => person.person_full_name %>
+            <% end %>
+          </div>
+          <div class="info">
+            <%= link_to person.person_full_name, person.link, :class => 'full_name' %>
+            <span class='post'><%= person.title %></span>
+            <%= person_contacts(person) %>
+            <%= person_short_address(person) %>
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>

@@ -37,7 +37,7 @@ module ApplicationHelper
 
   def person_short_address(person)
     return if person.office.blank? || person.building.blank?
-    content_tag :p, "#{person.building.address}, #{person.office}"
+    content_tag :p, "#{person.building.address}, #{person.office}", :class => 'address'
   end
 
   def person_full_address(person)
@@ -47,9 +47,9 @@ module ApplicationHelper
 
   def person_contacts(person)
     content = ''
-    content << person.phones
-    content << person.emails.map{ |email| mail_to(email.value) }.join(', ')
-    content_tag :p, content.squish.gsub(/;$/, '').html_safe if content.present?
+    content << content_tag(:span, person.phones.squish.gsub(/;$/,''), :class => 'phones') if person.phones.present?
+    content << content_tag(:span, person.emails.map{ |email| mail_to(email.value) }.join(', ').html_safe, :class => 'emails') if person.emails.any?
+    content.html_safe if content.present?
   end
 
   def person_additional_contacts(person)
@@ -79,6 +79,16 @@ module ApplicationHelper
       link << link_to(item.title, item.link)
     end
     content_tag :div, link.html_safe, class: :link
+  end
+
+
+  def photo_tag(options={})
+    size = options[:size] || '100x133'
+    width, height = size.scan(/\d+/)
+    url = options[:url].present? ?  options[:url].gsub(/(?!=\/files\/\d+\/)(\d+-\d+.?.?)(?=\/)/, "#{width}-#{height}!") : 'chief_stub.png'
+    title = options[:title] || 'Фото'
+
+    image_tag url, :size => size, :title => title, :alt => title
   end
 
 end
