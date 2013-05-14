@@ -9,6 +9,18 @@
       <div class="post"><%= object.content.title %></div>
       <%= person_contacts(object.content) %>
       <div class="address"><%= person_full_address(object.content) %></div>
+      <% if object.content.lectures && object.content.lectures.any? %>
+        <div class="lectures">
+          <h3>Читает курсы лекций:</h3>
+          <ul>
+            <% object.content.lectures.each do |lecture| %>
+              <li>
+                <%= lecture %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
 
