@@ -42,7 +42,7 @@ module ApplicationHelper
 
   def person_full_address(person)
     return if person.office.blank? || person.building.blank?
-    content_tag :p, "#{person.building.locality}, #{person.building.address} (#{person.building.downcased_title}), #{person.office}"
+    content_tag :p, "#{person.building.locality}, #{person.building.address} (#{person.building.downcased_title}), #{person.office}", :class => :address
   end
 
   def person_contacts(person)

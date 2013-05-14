@@ -8,8 +8,11 @@
     <div class="info">
       <div class="post"><%= object.content.title %></div>
       <%= person_contacts(object.content) %>
-      <div class="address"><%= person_full_address(object.content) %></div>
+      <%= person_full_address(object.content) %>
       <% if object.content.lectures && object.content.lectures.any? %>
+        <div class="schedule">
+          <%= link_to "Расписание занятий преподавателя", "http://timetable.tusur.ru/searches/teachers?search[teacher]=#{object.content.person_full_name}", :target => '_blank' %>
+        </div>
         <div class="lectures">
           <h3>Читает курсы лекций:</h3>
           <ul>
@@ -24,7 +27,7 @@
     </div>
   </div>
 
-  <% if object.content.person_bio %>
+  <% if object.content.person_bio.present? %>
     <div class="dossier">
       <h3>Биография</h3>
       <%= simple_format object.content.person_bio %>
