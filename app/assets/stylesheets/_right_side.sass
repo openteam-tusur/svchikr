@@ -1,3 +1,42 @@
 .right_side_info
-  .subnavigation
-    background: red
+  +clearfix
+  padding: 0 !important
+
+  .navigation_wrapper
+    ul
+      margin: 0
+      padding: 0
+
+      li
+        margin: 0
+        padding: 0
+
+        &:before
+          display: none
+
+        a
+          border: 1px solid #d5d5d5
+          color: #434343
+          display: block
+          line-height: 40px
+          height: 40px
+          padding: 0 0 0 10px
+
+        &.selected > a
+          border-left: 4px solid #ffa75b
+          font-weight: bold
+
+        ul
+          li
+            ul
+              li
+                a
+                  padding: 0 0 0 25px
+
+      &:first-child > li:first-child > a
+        +background-image(linear-gradient(#598dc9, #769ecf))
+        color: #fff
+        font-size: 14px
+        font-weight: bold
+        text-align: center
+        text-decoration: none
