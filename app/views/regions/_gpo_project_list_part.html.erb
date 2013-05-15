@@ -1,29 +1,23 @@
 <h1><%= object.part_title %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>№ группы ГПО</th>
-      <th>Название проекта</th>
-      <th>Ф. И. О. руководителя</th>
-      <th>Участники проекта</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% object.content.items.each do |item| %>
-      <tr>
-        <td rowspan=<%= item.participants.count+1 %>><%= item.cipher %></td>
-        <td rowspan=<%= item.participants.count+1 %>><%= link_to item.title, item.url, :target => '_blank' %></td>
-        <td rowspan=<%= item.participants.count+1 %>><%= item.managers.map{|a| "#{a.last_name} #{a.first_name} #{a.middle_name}"}.join(', ') %></td>
-        <% if item.participants.empty? %>
-          <td>&nbsp;</td>
-        <% end %>
-      </tr>
-      <% item.participants.each do |participant| %>
-        <tr>
-          <td><%= "#{participant.last_name} #{participant.first_name} #{participant.middle_name}" %></td>
-        </tr>
+<ul class='gpo_projects'>
+  <% object.content.items.each do |item| %>
+    <li>
+      <%= link_to item.title, item.url, :target => '_blank' %>
+      <% if item.goal.present? %>
+        <div class="goal">
+          <span>Цель проекта:</span>
+          <%= item.goal %>
+        </div>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+      <div class="managers">
+        <span>Руководитель:</span>
+        <%= item.managers.map{|a| "#{a.last_name} #{a.first_name} #{a.middle_name}".strip }.join(', ') %>
+      </div>
+      <div class="participants">
+        <span>Участники:</span>
+        <%= item.participants.map{|a| "#{a.last_name} #{a.first_name} #{a.middle_name}".strip }.join(', ') %>
+      </div>
+    </li>
+  <% end %>
+</ul>
