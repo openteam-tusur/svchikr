@@ -26,9 +26,7 @@
     <% end %>
   </div>
 
-  <h2>
-    <%= object.content.title %>
-  </h2>
+  <% content_for :page_title, object.content.title %>
 
   <div class="date">
     <%= l object.content.since.to_date, :format => :long %>
