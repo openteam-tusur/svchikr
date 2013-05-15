@@ -10,8 +10,9 @@ class MainController < ApplicationController
     end
 
     @page_title = page.title
+    @template = page.template
 
-    render "templates/#{page.template}"
+    render "templates/#{@template}"
   end
 
   private

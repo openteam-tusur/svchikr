@@ -44,6 +44,9 @@
     <%= render "regions/main_#{@main_navigation.type.underscore}", :object => @main_navigation.content if @main_navigation %>
     <%= render "regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content if @breadcrumbs %>
     <div class='content'>
+      <% unless @template =~ /main_page/ %>
+        <h1 class='index'><%= content_for?(:page_title) ? yield(:page_title) : @page_title %></h1>
+      <% end %>
       <%= yield :content %>
     </div>
   </div>
