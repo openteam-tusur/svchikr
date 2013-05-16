@@ -1,0 +1,31 @@
+<div class="provided_disciplines">
+  <ul>
+    <% object.body.goses.each do |gos, specialities| %>
+      <li>
+        <h3><%= "ГОС #{gos}-го поколения" %></h3>
+        <ul>
+          <% specialities.each do |speciality, intakes| %>
+            <li>
+              <h4><%= speciality %></h4>
+              <ul>
+                <% intakes.each do |intake, disciplines| %>
+                  <li>
+                    <h5><%= intake %></h5>
+                    <ul>
+                      <% disciplines.each do |discipline, link| %>
+                        <li>
+                          <%= discipline %>
+                          <%= link_to "скачать рабочую программу", link, :target => '_blank' if link %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
