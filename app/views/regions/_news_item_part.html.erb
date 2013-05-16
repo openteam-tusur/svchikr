@@ -1,17 +1,51 @@
 <% unless object.blank? %>
-  <div class="right_side noindex" style='overflow: hidden'>
-    <%  if object.content.images.any? %>
+  <div class="news_wrapper">
+
+    <% content_for :page_title, object.content.title %>
+
+    <div class="news_date">
+      <%= l object.content.since.to_date, :format => :long %>
+    </div>
+
+    <div class="annotation_on_show">
+      <%= raw object.content.annotation %>
+    </div>
+
+    <%  if object.content.images.one? %>
       <div class="entry_image">
-        <%= image_tag object.content.images.first.thumbnail.url, :alt => object.content.images.first.description, :width => object.content.images.first.thumbnail.width, :height => object.content.images.first.thumbnail.height %>
+        <%= image_tag object.content.images.first.thumbnail.url, :title => object.content.images.first.description, :alt => object.content.images.first.description, :width => object.content.images.first.thumbnail.width, :height => object.content.images.first.thumbnail.height %>
         <div class="description">
           <%= object.content.images.first.description %>
         </div>
       </div>
     <% end %>
 
-    <% if object.content.more_like_this %>
+    <%= raw object.content.body %>
+
+    <% if object.content.images && object.content.images.many? %>
+      <div class="galleria_wrapper">
+        <div id="galleria">
+          <% object.content.images.each do |image| %>
+            <%= image_tag image.thumbnail.url, :alt => image.description, :width => image.thumbnail.width, :height => image.thumbnail.height %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if object.content.source.present? %>
+      <div class="source">
+        <strong>Источник:</strong>
+        <% unless object.content.source_link.blank? %>
+          <%= link_to object.content.source, object.source_link, :target => :_blank, :rel => :nofollow %>
+        <% else %>
+          <%= object.content.source %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if object.content.more_like_this.present? %>
       <div class="more_like_this noindex">
-        <h2>Другие новости</h2>
+        <h4>Другие новости</h4>
         <ul>
           <% object.content.more_like_this.each do |item| %>
             <li>
@@ -25,37 +59,4 @@
       </div>
     <% end %>
   </div>
-
-  <% content_for :page_title, object.content.title %>
-
-  <div class="date">
-    <%= l object.content.since.to_date, :format => :long %>
-  </div>
-
-  <div class="annotation_on_show">
-    <%= raw object.content.annotation %>
-  </div>
-
-  <%= raw object.content.body %>
-
-  <% if object.content.source.present? %>
-    <div class="source">
-      <strong>Источник:</strong>
-      <% unless object.content.source_link.blank? %>
-        <%= link_to object.content.source, object.source_link, :target => :_blank, :rel => :nofollow %>
-      <% else %>
-        <%= object.content.source %>
-      <% end %>
-    </div>
-  <% end %>
-
-  <% if object.content.images && object.content.images.many? %>
-    <div class="galleria_wrapper">
-      <div id="galleria">
-        <% object.content.images.each do |image| %>
-          <%= image_tag image.thumbnail.url, :alt => image.description, :width => image.thumbnail.width, :height => image.thumbnail.height %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 <% end %>
