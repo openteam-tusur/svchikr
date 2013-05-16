@@ -4,7 +4,7 @@
       <li>
         <h3><%= "ГОС #{gos}-го поколения" %></h3>
         <ul>
-          <% specialities.each do |speciality, intakes| %>
+          <% specialities.sort.each do |speciality, intakes| %>
             <li>
               <h4><%= speciality %></h4>
               <ul>
