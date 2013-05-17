@@ -2,13 +2,15 @@
   <h3><%= object.title %></h3>
 
   <div id='galleria'>
-    <% object.gallery_pictures.each do |picture| %>
+    <% if false %>
+    <% object.content.gallery_pictures.each do |picture| %>
       <% url = picture.try(:picture_url) || picture.try(:url) %>
       <%= link_to image_tag(
                     image_url(url, 200, 128),
                     :alt => picture.description
                   ),
                   image_url(url, 1050, 700) %>
+    <% end %>
     <% end %>
   </div>
 </div>
