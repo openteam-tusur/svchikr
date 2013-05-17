@@ -5,4 +5,5 @@
  * = require gallery
  * = require main
  * = require collapser
+ * = require galleria
  */

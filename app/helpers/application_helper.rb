@@ -85,10 +85,13 @@ module ApplicationHelper
   def photo_tag(options={})
     size = options[:size] || '100x133'
     width, height = size.scan(/\d+/)
-    url = options[:url].present? ?  options[:url].gsub(/(?!=\/files\/\d+\/)(\d+-\d+.?.?)(?=\/)/, "#{width}-#{height}!") : 'chief_stub.png'
+    url = options[:url].present? ? image_url(options[:url], width, height) : 'chief_stub.png'
     title = options[:title] || 'Фото'
 
     image_tag url, :size => size, :title => title, :alt => title
   end
 
+  def image_url(url, width, height)
+    url.gsub(/(?!=\/files\/\d+\/)(\d+-\d+.?.?)(?=\/)/, "#{width}-#{height}!")
+  end
 end
