@@ -6,4 +6,5 @@
  * = require main
  * = require collapser
  * = require galleria
+ * = require reports
  */
