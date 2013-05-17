@@ -2,7 +2,6 @@
   <h3><%= object.title %></h3>
 
   <div id='galleria'>
-    <% if false %>
     <% object.content.gallery_pictures.each do |picture| %>
       <% url = picture.try(:picture_url) || picture.try(:url) %>
       <%= link_to image_tag(
@@ -10,7 +9,6 @@
                     :alt => picture.description
                   ),
                   image_url(url, 1050, 700) %>
-    <% end %>
     <% end %>
   </div>
 </div>
