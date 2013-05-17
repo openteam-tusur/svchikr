@@ -1,8 +1,11 @@
+<% content_for :page_title, "Результаты поиска по запросу: <i>#{params[:parts_params][:search][:q]}</i>".html_safe %>
 <% content_for :content do %>
   <% if @content %>
     <div class='search_total_count'>
       <%= t('search_total_count') %>: <strong><%= @content.content.pagination.total_count %></strong>
     </div>
   <% end %>
-  <%= render_partial_for_region(@content) %>
+  <div class="search_wrapper">
+    <%= render_partial_for_region(@content) %>
+  </div>
 <% end %>

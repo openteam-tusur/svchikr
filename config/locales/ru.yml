@@ -3,6 +3,7 @@ ru:
     tusur: "ТУСУР"
     rtf: "<span class='uppercase'>Радиотехнический факультет (РТФ)</span>"
     svchikr: "<span class='uppercase'>Кафедра</span> СВЧиКР"
+  search_total_count: Всего найдено
   site_name: "Кафедра сверхвысокочастотной и квантовой радиотехники (СВЧиКР)"
   sitemap: "Карта сайта"
   locale:
