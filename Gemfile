@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 group :assets do
   gem 'coffee-rails'
@@ -25,4 +25,8 @@ group :default do
   gem 'uuid'
 end
 
-gem 'brakeman', :group => :development
+group :development do
+  gem 'brakeman'
+  gem 'capistrano-unicorn'
+  gem 'openteam-capistrano'
+end
