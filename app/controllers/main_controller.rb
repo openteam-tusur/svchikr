@@ -27,10 +27,6 @@ class MainController < ApplicationController
 
     def remote_url
       request_path, parts_params = request.fullpath.split('?')
-
-      # TODO: выяснить нужно ли энкодить
-      #parts_params = URI.encode(parts_params || '')
-
       "#{cms_address}#{request_path.split('/').compact.join('/')}.json?#{parts_params}"
     end
 
@@ -38,22 +34,40 @@ class MainController < ApplicationController
       @page ||= Hashie::Mash.new(request_json).page
     end
 
-    def curl_request
-      @curl_request ||= Curl::Easy.perform(remote_url) do |curl|
-        curl.headers['Accept'] = 'application/json'
+    def rest_request
+      @rest_request ||= RestClient::Request.execute(
+        :method => :get,
+        :url => remote_url,
+        :timeout => nil,
+        :headers => {
+          :Accept => 'application/json',
+        }
+      ) do |response, request, result, &block|
+        response
       end
     end
 
     def request_status
-      @request_status ||= curl_request.response_code
+      @request_status ||= rest_request.code
     end
 
     def request_body
-      @request_body ||= curl_request.body_str
+      @request_body ||= rest_request.body
+    end
+
+    def is_json?(str)
+      begin
+        !!JSON.parse(str)
+      rescue
+        false
+      end
     end
 
     def request_json
-      @request_body ||= ActiveSupport::JSON.decode(request_body)
+      @request_json ||= begin
+                          raise 'Response is not a JSON' unless is_json?(request_body)
+                          ActiveSupport::JSON.decode(request_body)
+                        end
     end
 
     def page_regions

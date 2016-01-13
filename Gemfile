@@ -2,14 +2,13 @@ source 'https://rubygems.org'
 
 group :assets do
   gem 'coffee-rails'
-  gem 'therubyracer',       :platforms => :ruby, :require => 'v8'
-  gem 'libv8',              '~> 3.11.8'   unless RUBY_PLATFORM =~ /freebsd/
+  gem 'therubyracer', :platforms => :ruby, :require => 'v8'
+  gem 'libv8', '~> 3.11.8' unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'
 end
 
 group :default do
   gem 'compass-rails'
-  gem 'curb'
   gem 'el_vfs_client'
   gem 'esp-commons'
   gem 'formtastic'
@@ -17,7 +16,8 @@ group :default do
   gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails',              '~> 3.2.13'
+  gem 'rails', '~> 3.2.22'
+  gem 'rest-client'
   gem 'russian'
   gem 'rvm-capistrano'
   gem 'sass-rails'
