@@ -13,10 +13,10 @@
 
 <% if @chief_department.content.phones.present? %>
   <div class='phones'>
-    <% @chief_department.content.phones.squish.gsub(/;$/, '').split(';').each do |phone| %>
+    <% @chief_department.content.phones.each do |phone| %>
       <dl class='phone'>
-        <dt><%= phone.squish.split(':')[0].mb_chars.capitalize %>:</dt>
-        <dd><%= phone.squish.split(':')[1] %></dd>
+        <dt><%= phone.kind_text.mb_chars.capitalize %>:</dt>
+        <dd><%= "(#{phone.code}) " if phone.code.present? %><%= phone.number.gsub(/(\d{2})(\d{2})(\d{2})/, '\1-\2-\3') %></dd>
       </dl>
     <% end %>
   </div>
@@ -25,7 +25,7 @@
 <% if @chief_department.content.emails.present? %>
   <dl class='emails'>
     <dt>E-mail:</dt>
-    <dd><%= @chief_department.content.emails.map{ |email| mail_to email.value }.join(', ').html_safe %></dd>
+    <dd><%= @chief_department.content.emails.map{ |email| mail_to email.emai }.join(', ').html_safe %></dd>
   </dl>
 <% end %>
 

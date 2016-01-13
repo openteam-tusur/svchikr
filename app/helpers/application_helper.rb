@@ -45,10 +45,20 @@ module ApplicationHelper
     content_tag :p, "#{person.building.locality}, #{person.building.address} (#{person.building.downcased_title}), #{person.office}", :class => :address
   end
 
+  def decorate_phone(phone)
+    content = ''
+    content << "(#{phone.code}) " if phone.code.present?
+    content << phone.number.gsub(/(\d{2})(\d{2})(\d{2})/, '\1-\2-\3')
+
+    content
+  end
+
   def person_contacts(person)
     content = ''
-    content << content_tag(:span, person.phones.squish.gsub(/;$/,''), :class => 'phones') if person.phones.present?
-    content << content_tag(:span, person.emails.map{ |email| mail_to(email.value) }.join(', ').html_safe, :class => 'emails') if person.emails.any?
+    content << content_tag(:span, :class => 'phones') do
+      person.phones.map { |phone| decorate_phone(phone) }.join(', ')
+    end if person.phones.any?
+    content << content_tag(:span, person.emails.map{ |email| mail_to(email.email) }.join(', ').html_safe, :class => 'emails') if person.emails.any?
     content.html_safe if content.present?
   end
 
