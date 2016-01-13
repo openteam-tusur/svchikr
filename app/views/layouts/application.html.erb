@@ -15,21 +15,21 @@
 <body>
   <div class='tinted_box_wrapper'>
     <ul class='tinted_box'>
-      <li class='tusur'><a href='http://www.tusur.ru/'><%= I18n.t('tinted_box.tusur') %></a></li>
-      <li class='rtf'><a href='http://www.tusur.ru/ru/faculties/rtf/'><%= I18n.t('tinted_box.rtf').html_safe %></a></li>
-      <li class='svchikr'><a href='/<%= I18n.locale %>/'><%= I18n.t('tinted_box.svchikr').html_safe %></a></li>
+      <li class='tusur'><a href='http://www.tusur.ru'><%= I18n.t('tinted_box.tusur') %></a></li>
+      <li class='rtf'><a href='http://www.tusur.ru/ru/faculties/rtf'><%= I18n.t('tinted_box.rtf').html_safe %></a></li>
+      <li class='svchikr'><a href='/<%= I18n.locale %>'><%= I18n.t('tinted_box.svchikr').html_safe %></a></li>
     </ul>
   </div>
   <div class='header'>
     <div class='site_name'>
-      <h1><a href='/<%= I18n.locale %>/'><%= I18n.t('site_name') %></a></h1>
+      <h1><a href='/<%= I18n.locale %>'><%= I18n.t('site_name') %></a></h1>
     </div>
     <div class='language_and_search'>
       <ul class='language'>
         <%= languages_links %>
       </ul>
       <div class='search_form'>
-        <form action='/<%= I18n.locale %>/search/'>
+        <form action='/<%= I18n.locale %>/search'>
           <ul class='inputs'>
             <li>
               <input type='text' name='parts_params[search][q]' value='<%= params[:parts_params].try(:[], 'search').try(:[], 'q') %>' placeholder='<%= I18n.t('placeholder') %>' />
@@ -53,7 +53,7 @@
     <div class='footer'>
       <div class='contacts'>
         <p class='year'><%= (-> { Date.today.year }.call) %></p>
-        <p class='name'><a href='http://www.tusur.ru/'><%= I18n.t('footer.tusur') %></a>, <%= I18n.t('footer.svchikr') %></p>
+        <p class='name'><a href='http://www.tusur.ru'><%= I18n.t('footer.tusur') %></a>, <%= I18n.t('footer.svchikr') %></p>
         <p class='small'><%= I18n.t('footer.address') %></p>
         <p class='small'><%= I18n.t('footer.phone') %></p>
       </div>
