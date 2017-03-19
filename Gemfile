@@ -15,7 +15,7 @@ group :default do
   gem 'hashie'
   gem 'jquery-rails'
   gem 'kaminari'
-  gem 'openteam-commons'
+  gem 'openteam-commons', '~> 0.3.3'
   gem 'rails', '~> 3.2.22'
   gem 'rest-client'
   gem 'russian'
